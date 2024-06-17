@@ -13,13 +13,17 @@ export default function HomeScreen({route}) {
         <Text style={styles.email}>naa@gmail.com</Text>
         <Image source={require('../assets/images/apple.png')} style={styles.user}/>
       </View>
-      
-
+      <View style={styles.search}>
+        <Image source={require('../assets/images/search.png')} style={styles.searchIcon}/>
         <TextInput
-            style={styles.input}
+            style={styles.searchInput}
             placeholder="Search jobs or position"
-            placeholderTextColor={'#AFB0B6'}
+            placeholderTextColor={'#95969D'}
         />
+        <View style={styles.menu}>
+        <Image source={require('../assets/images/menu.png')} style={styles.menuIcon}/>
+        </View>
+      </View>
       
     </View>
   )
@@ -45,16 +49,37 @@ const styles = StyleSheet.create({
     left:300,
     top:-52,
   },
-  input:{
+  search:{
+    flexDirection:'row',
     height:50,
     width:265,
     borderWidth:1,
-    borderColor:'#AFB0B6',
-    padding:12,
-    fontSize:14,
+    backgroundColor:'#F2F2F3',
+    borderColor:'#000000',
+    borderRadius:12,
+  },
+  searchIcon:{
+    height:26,
+    width:26,
+    left:16,
+    top:10,
+  },
+  searchInput:{
+    fontSize:15,
     fontWeight:500,
     color:'#000000',
-    borderRadius:12,
-    fontSize:15,
+    left:34,
   },
+  menu:{
+    left:120,
+    borderWidth:1,
+    backgroundColor:'#F2F2F3',
+    borderColor:'#000000',
+    borderRadius:12,
+    padding:10,
+  },
+  menuIcon:{
+    height:30,
+    width:30,
+  }
 })
