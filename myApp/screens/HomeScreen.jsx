@@ -1,18 +1,20 @@
 import { View, Text,StyleSheet,Image, TextInput, ScrollView, FlatList } from 'react-native'
 import React from 'react'
 import { featuredJobs } from '../Data/featuredJobs';
+import { popularJobs } from '../Data/popularJobs';
 import JobCard from '../components/jobCard';
-
+import PopularCard from '../components/PopularCard';
 
 export default function HomeScreen({route,}) {
   const {name,email} = route.params;
 
   return (
-    <View style={styles.home}>
+    <ScrollView>
+      <View style={styles.home}>
       {/*Header*/}
       <View>
-        <Text style={styles.name}>Naa</Text>
-        <Text style={styles.email}>naa@gmail.com</Text>
+        <Text style={styles.name}>{name}</Text>
+        <Text style={styles.email}>{email}</Text>
         <Image source={require('../assets/images/user.png')} style={styles.user}/>
       </View>
       {/*Search box*/}
@@ -28,17 +30,14 @@ export default function HomeScreen({route,}) {
         </View>
       </View>
       {/*Featured jobs*/}
-      <View style={styles.jobs}>
       <View style={styles.featuredJobs}>
           <Text style={styles.featured}>Featured Jobs</Text>
           <Text style={styles.view}>See all</Text>
       </View>
-
-      </View>
       <FlatList
         horizontal
         data={featuredJobs}
-        renderItem={({ item }) => 
+        renderItem={({ item }) =>
         <JobCard job={item} />
       }
         keyExtractor={item => item.id}
@@ -46,7 +45,26 @@ export default function HomeScreen({route,}) {
         showsHorizontalScrollIndicator={false}
       />
       
+      {/*popular jobs*/}
+      <View style={styles.popularJobs}>
+          <Text style={styles.popularTitle}>Popular Jobs</Text>
+          <Text style={styles.popularView}>See all</Text>
+      </View>
+      <FlatList
+        data={popularJobs}
+        renderItem={({ item }) =>
+        <PopularCard job={item} />
+      }
+        keyExtractor={item => item.id}
+        contentContainerStyle={styles.flatListContainer}
+        showsHorizontalScrollIndicator={false}
+      />
+      
+      
+      
+      
     </View>
+    </ScrollView>
   )
 }
 
@@ -119,7 +137,20 @@ const styles = StyleSheet.create({
     right:65,
     color:'#95969D',
   },
-  
-  
-
+  popularJobs:{
+    flexDirection:'row',
+    justifyContent:'space-between',
+    top:60,
+  },
+  popularTitle:{
+    fontSize:16,
+    fontWeight:600,
+    color:'#0D0D26',
+  },
+  popularView:{
+    fontSize:14,
+    fontWeight:400,
+    right:65,
+    color:'#95969D',
+  }
 })

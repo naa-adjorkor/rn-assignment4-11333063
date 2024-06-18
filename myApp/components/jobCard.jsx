@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Image } from 'react-native';
 
 const JobCard = ({ job }) => {
     return (
+        
         <View  style={[styles.jobCard, { backgroundColor: job.backgroundColor }]}>
             <View style={styles.jobCardImage}>
                 <Image source={job.image} style={styles.jobCardIcon} />
@@ -25,7 +26,6 @@ const styles = StyleSheet.create({
         height: 186,
         width: 280,
         top:100,
-        //backgroundColor: {'#4e73df'},
         borderRadius: 12,
         marginBottom: 100,
         marginRight: 15,
